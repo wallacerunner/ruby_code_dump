@@ -10,7 +10,8 @@ until bmp.eof?
     pix[:red]   << bmp.read(1).unpack("H*")
 end
 
-File.open("pixels.txt", "w+") do |f|
+filename = ARGV[1] || "pixels.txt"
+File.open(filename, "w+") do |f|
   pix[:red].length.times do |n|
     f.print "#{[pix[:red][n], pix[:green][n], pix[:blue][n]].join} "
   end
